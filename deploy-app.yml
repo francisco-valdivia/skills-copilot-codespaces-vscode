@@ -1,0 +1,16 @@
+# Create a GitHub action to email a report from a file at 6 a.m. daily 
+# The action should use the SendGrid service and a secret to authenticate.
+
+name: Email report
+on:
+  schedule:
+    - cron: '0 6 * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Email report
+      env:
+        SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
