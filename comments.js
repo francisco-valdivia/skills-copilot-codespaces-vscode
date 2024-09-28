@@ -28,7 +28,5 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Comments data
 const comments = [
-  {
-    id: 1,
-    name: 'John',
-    email: '
+  { id: 1, name: 'Tony', content: 'Hello, this is Tony.' },
+  { id: 2, name: 'Chris', content: 'Hello, this is Chris.' }]
