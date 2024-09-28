@@ -1,31 +1,32 @@
-// creaet web server
-// 1. require express
-// 2. require path
-// 3. create an express server
-// 4. create a route that responds to GET requests to /comments
-// 5. read the comments.json file
-// 6. send the comments as the response
-// 7. start the server
+// Create web server and listen to port 3000
+// Create a route for comments
+// Create a route for comments/new
+// Create a route for comments/:id
+// Create a route for comments/:id/edit
+// Create a route for comments/:id/delete
+// Create a route for comments/:id/put
 
-// 1. require express
+// Require express
 const express = require('express');
-
-// 2. require path
-const path = require('path');
-
-// 3. create an express server
 const app = express();
+const port = 3000;
 
-// 4. create a route that responds to GET requests to /comments
-// 5. read the comments.json file
-// 6. send the comments as the response
-app.get('/comments', (req, res) => {
-    res.sendFile(path.join(__dirname, 'comments.json'));
-});
+// Require express-handlebars
+const exphbs = require('express-handlebars');
 
-// 7. start the server
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
-});
+// Require body-parser
+const bodyParser = require('body-parser');
 
-// go to http://localhost:3000/comments in your browser to see the comments data
+// Set the view engine to handlebars
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
+// Use body-parser
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Comments data
+const comments = [
+  {
+    id: 1,
+    name: 'John',
+    email: '
